@@ -6,7 +6,7 @@ const newMazeButton = document.getElementById("newMazeButtonHTML");
 // maze grid configuration
 var mazeSize = 15;
 var cellSize = 40;
-
+let playerX = 0, playerY = 0;
 // Maze generation using Recursive Backtracking
 function generateMaze(size) {
     const maze = [];
@@ -96,6 +96,17 @@ function drawMaze(grid, cellSize) {
             }
         }
     }
+        // Draw the player as a red circle
+    ctx.fillStyle = "red";
+    ctx.beginPath();
+    ctx.arc(
+        playerX * cellSize + cellSize / 2,
+        playerY * cellSize + cellSize / 2,
+        cellSize / 4,
+        0,
+        2 * Math.PI
+    );
+    ctx.fill();
 }
 
 // Set canvas size and draw
@@ -104,10 +115,29 @@ mazeCanvas.height = mazeSize * cellSize;
 
 // Initial maze draw
 let mazeGrid = generateMaze(mazeSize);
+playerX = 0;
+playerY = 0;
 drawMaze(mazeGrid, cellSize);
 
 // Add event listener to regenerate maze
 newMazeButton.addEventListener("click", () => {
     mazeGrid = generateMaze(mazeSize);
+    playerX = 0;
+    playerY = 0;
+    drawMaze(mazeGrid, cellSize);
+});
+
+// Add event listener for player movement
+document.addEventListener("keydown", (e) => {
+    const cell = mazeGrid[playerY][playerX];
+    if (e.key === "ArrowUp" && !cell.walls[0] && playerY > 0) {
+        playerY--;
+    } else if (e.key === "ArrowRight" && !cell.walls[1] && playerX < mazeSize - 1) {
+        playerX++;
+    } else if (e.key === "ArrowDown" && !cell.walls[2] && playerY < mazeSize - 1) {
+        playerY++;
+    } else if (e.key === "ArrowLeft" && !cell.walls[3] && playerX > 0) {
+        playerX--;
+    }
     drawMaze(mazeGrid, cellSize);
 });
