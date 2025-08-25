@@ -1,0 +1,57 @@
+.road-rage-regular {
+    font-family: "Road Rage", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+
+h1 {
+    text-align: center;
+    color: #000000;
+    font-family: 'Road Rage', sans-serif;
+    letter-spacing: 2.5px;
+    font-size: 4em;
+}
+
+.container {
+    margin: 25% auto;
+    width: 50em;
+    max-width: 90%;
+    background-color: #afafaf;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 10px 5px #000000;
+
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 1em;
+
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    flex-shrink: 0;
+    text-align: center;
+    padding: 1em;
+}
