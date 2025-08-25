@@ -6,7 +6,9 @@ const newMazeButton = document.getElementById("newMazeButtonHTML");
 // maze grid configuration
 var mazeSize = 15;
 var cellSize = 40;
-let playerX = 0, playerY = 0;
+const START_POS = { x: 0, y: 0 };
+const END_POS = { x: mazeSize - 1, y: mazeSize - 1 };
+let playerX = START_POS.x, playerY = START_POS.y;
 // Maze generation using Recursive Backtracking
 function generateMaze(size) {
     const maze = [];
@@ -96,7 +98,31 @@ function drawMaze(grid, cellSize) {
             }
         }
     }
-        // Draw the player as a red circle
+    // Draw the start as a green circle (top-left)
+    ctx.fillStyle = "green";
+    ctx.beginPath();
+    ctx.arc(
+        START_POS.x * cellSize + cellSize / 2,
+        START_POS.y * cellSize + cellSize / 2,
+        cellSize / 4,
+        0,
+        2 * Math.PI
+    );
+    ctx.fill();
+
+    // Draw the end as a blue circle (bottom-right)
+    ctx.fillStyle = "blue";
+    ctx.beginPath();
+    ctx.arc(
+        END_POS.x * cellSize + cellSize / 2,
+        END_POS.y * cellSize + cellSize / 2,
+        cellSize / 4,
+        0,
+        2 * Math.PI
+    );
+    ctx.fill();
+
+    // Draw the player as a red circle
     ctx.fillStyle = "red";
     ctx.beginPath();
     ctx.arc(
@@ -115,8 +141,8 @@ mazeCanvas.height = mazeSize * cellSize;
 
 // Initial maze draw
 let mazeGrid = generateMaze(mazeSize);
-playerX = 0;
-playerY = 0;
+playerX = START_POS.x;
+playerY = START_POS.y;
 drawMaze(mazeGrid, cellSize);
 
 // Add event listener to regenerate maze
