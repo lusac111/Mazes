@@ -2,6 +2,7 @@
 const mazeCanvas = document.getElementById("mazeDisplayHTML");
 const ctx = mazeCanvas.getContext("2d");
 const newMazeButton = document.getElementById("newMazeButtonHTML");
+const printMazeButton = document.getElementById("printMazeButtonHTML");
 
 // maze grid configuration
 var mazeSize = 15;
@@ -153,6 +154,10 @@ newMazeButton.addEventListener("click", () => {
     drawMaze(mazeGrid, cellSize);
 });
 
+// Add event listener to print the maze
+printMazeButton.addEventListener("click", () => {
+    window.print();
+});
 // Add event listener for player movement
 document.addEventListener("keydown", (e) => {
     const cell = mazeGrid[playerY][playerX];
