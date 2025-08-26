@@ -3,6 +3,7 @@ const mazeCanvas = document.getElementById("mazeDisplayHTML");
 const ctx = mazeCanvas.getContext("2d");
 const newMazeButton = document.getElementById("newMazeButtonHTML");
 const printMazeButton = document.getElementById("printMazeButtonHTML");
+const toggleModeButton = document.getElementById("toggleModeButtonHTML");
 
 // maze grid configuration
 var mazeSize = 15;
@@ -10,6 +11,7 @@ var cellSize = 40;
 const START_POS = { x: 0, y: 0 };
 const END_POS = { x: mazeSize - 1, y: mazeSize - 1 };
 let playerX = START_POS.x, playerY = START_POS.y;
+
 // Maze generation using Recursive Backtracking
 function generateMaze(size) {
     const maze = [];
@@ -59,6 +61,10 @@ function generateMaze(size) {
     return maze;
 }
 
+function endlessMazeMode() {
+    // Placeholder for endless maze generation logic
+    alert("Endless Maze Mode is not implemented yet.");
+}
 // Draw maze on canvas
 function drawMaze(grid, cellSize) {
     ctx.clearRect(0, 0, mazeCanvas.width, mazeCanvas.height);
@@ -99,6 +105,7 @@ function drawMaze(grid, cellSize) {
             }
         }
     }
+
     // Draw the start as a green circle (top-left)
     ctx.fillStyle = "green";
     ctx.beginPath();
@@ -156,12 +163,23 @@ newMazeButton.addEventListener("click", () => {
 
 // Add event listener to print the maze
 printMazeButton.addEventListener("click", () => {
-
-let url = mazeCanvas.toDataURL();
-let win = window.open();
-win.document.write("<img src='" + url + "'/>");
-win.setTimeout(() => win.print(), 0);
+    let url = mazeCanvas.toDataURL();
+    let win = window.open();
+    win.document.write("<img src='" + url + "'/>");
+    win.setTimeout(() => win.print(), 0);
 });
+
+// Add event listener to toggle mode between regular and endless (placeholder functionality)
+toggleModeButton.addEventListener("click", () => {
+    if (toggleModeButton.innerText === "Switch to Endless Mode") {
+        toggleModeButton.innerText = "Switch to Regular Mode";
+        endlessMazeMode();
+    } else {
+        toggleModeButton.innerText = "Switch to Endless Mode";
+        drawMaze(mazeGrid, cellSize);
+    }
+});
+
 // Add event listener for player movement
 document.addEventListener("keydown", (e) => {
     const cell = mazeGrid[playerY][playerX];
@@ -175,4 +193,11 @@ document.addEventListener("keydown", (e) => {
         playerX--;
     }
     drawMaze(mazeGrid, cellSize);
+    if (playerX === END_POS.x && playerY === END_POS.y) {
+        alert("Congratulations! You've reached the end!");
+        mazeGrid = generateMaze(mazeSize);
+        playerX = 0;
+        playerY = 0;
+        drawMaze(mazeGrid, cellSize);
+    }
 });
