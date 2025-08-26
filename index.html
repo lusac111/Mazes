@@ -13,17 +13,24 @@
     <main>
         <h1>MAZES </h1>
         <div class="container">
-            <canvas id="mazeDisplayHTML" width="300" height="300"></canvas>
+            <canvas id="mazeDisplayHTML" width="300" height="300" class="canvas"></canvas>
             <br>
             <button id="newMazeButtonHTML" class="btn">New Maze</button>
             <button id="printMazeButtonHTML" class="btn">Print Maze</button>
-            <button id="toggleModeButtonHTML" class="btn">Toggle Mode</button>
+            <button id="toggleModeButtonHTML" class="btn">Start</button>
             <div id="instructions">
                 <h2 id="instructions">Instructions</h2>
                 <p>Use the arrow keys to navigate the maze. Reach the blue circle to win!</p>
                 <p>Click "New Maze" to generate a new maze.</p>
-                <p>Click "Print Maze" to well... print the maze</p </div>
+                <p>Click "Print Maze" to well... print the maze</p>
+                <p>Click "Start" to start the game</p>
             </div>
+            <div id="regularMazeModeOptions">
+                <h2>Regular Maze Options</h2>
+                <label for="mazeSizeInputHTML">Maze size:</label>
+                <input type="number" id="mazeSizeInputHTML" value="15" min="5" max="50" class="numberInput">
+            </div>
+        </div>
     </main>
     <footer>
         <small>

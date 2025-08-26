@@ -4,14 +4,34 @@ const ctx = mazeCanvas.getContext("2d");
 const newMazeButton = document.getElementById("newMazeButtonHTML");
 const printMazeButton = document.getElementById("printMazeButtonHTML");
 const toggleModeButton = document.getElementById("toggleModeButtonHTML");
+const mazeSizeInput = document.getElementById("mazeSizeInputHTML");
 
 // maze grid configuration
-var mazeSize = 15;
-var cellSize = 40;
+let mazeSize = 15;
+let cellSize = 40;
 const START_POS = { x: 0, y: 0 };
 const END_POS = { x: mazeSize - 1, y: mazeSize - 1 };
 let playerX = START_POS.x, playerY = START_POS.y;
 
+// change maze size based on the user input
+mazeSizeInput.addEventListener("change", () => {
+    let newSize = parseInt(mazeSizeInput.value);
+    if (isNaN(newSize) || newSize < 5) newSize = 5;
+    if (newSize > 30) newSize = 30;
+    mazeSize = newSize;
+    mazeSizeInput.value = newSize;
+    END_POS.x = mazeSize - 1;
+    END_POS.y = mazeSize - 1;
+    if (!endlessModeActive) {
+        mazeGrid = generateMaze(mazeSize);
+        let playerX = START_POS.x, playerY = START_POS.y;
+        playerPixelX = playerX * cellSize;
+        playerPixelY = playerY * cellSize;
+        mazeCanvas.width = mazeSize * cellSize;
+        mazeCanvas.height = mazeSize * cellSize;
+        drawMaze(mazeGrid, cellSize);
+    }
+}); 
 // Animation state for smooth movement
 let isMoving = false;
 let playerPixelX = START_POS.x * cellSize;
@@ -467,8 +487,6 @@ drawMaze(mazeGrid, cellSize);
 newMazeButton.addEventListener("click", () => {
     endlessModeActive = false;
     mazeGrid = generateMaze(mazeSize);
-    playerX = 0;
-    playerY = 0;
     mazeCanvas.width = mazeSize * cellSize;
     mazeCanvas.height = mazeSize * cellSize;
     drawMaze(mazeGrid, cellSize);
@@ -478,6 +496,7 @@ newMazeButton.addEventListener("click", () => {
 printMazeButton.addEventListener("click", () => {
     let url = mazeCanvas.toDataURL();
     let win = window.open();
+
     win.document.write("<img src='" + url + "'/>");
     win.setTimeout(() => win.print(), 0);
 });
