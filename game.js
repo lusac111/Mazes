@@ -156,7 +156,11 @@ newMazeButton.addEventListener("click", () => {
 
 // Add event listener to print the maze
 printMazeButton.addEventListener("click", () => {
-    window.print();
+
+let url = mazeCanvas.toDataURL();
+let win = window.open();
+win.document.write("<img src='" + url + "'/>");
+win.setTimeout(() => win.print(), 0);
 });
 // Add event listener for player movement
 document.addEventListener("keydown", (e) => {
