@@ -614,7 +614,8 @@ mazeSizeInput.addEventListener("change", () => {
     END_POS.x = mazeSize - 1;
     END_POS.y = mazeSize - 1;
     mazeGrid = generateMaze(mazeSize);
-    let playerX = START_POS.x, playerY = START_POS.y;
+    playerX = START_POS.x;
+    playerY = START_POS.y;
     playerPixelX = playerX * cellSize;
     playerPixelY = playerY * cellSize;
     mazeCanvas.width = mazeSize * cellSize;
