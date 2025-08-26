@@ -5,6 +5,7 @@ const newMazeButton = document.getElementById("newMazeButtonHTML");
 const printMazeButton = document.getElementById("printMazeButtonHTML");
 const toggleModeButton = document.getElementById("toggleModeButtonHTML");
 const mazeSizeInput = document.getElementById("mazeSizeInputHTML");
+const instructionsText = document.getElementById("instructionsTextHTML");
 
 // maze grid configuration
 let mazeSize = 15;
@@ -521,7 +522,10 @@ function regularMoveHandler(e) {
         playerY = nextY;
         animatePlayerMove(playerX, playerY, "regular", () => {
             if (playerX === END_POS.x && playerY === END_POS.y) {
-                alert("Congratulations! You've reached the end!");
+                instructionsText.textContent = "You've completed the maze!";
+                setTimeout(() => {
+                    instructionsText.textContent = "Instructions";
+                }, 3000);
                 mazeGrid = generateMaze(mazeSize);
                 playerX = 0;
                 playerY = 0;
