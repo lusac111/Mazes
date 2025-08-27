@@ -71,6 +71,7 @@ canvas {
     display: flexbox;
     border-radius: 5px;
     margin-right: 25px;
+    margin-bottom: 25px;
 }
 
 /* Ensure main takes available space */
@@ -115,10 +116,31 @@ button {
     align-items: center;
 }
 
+/* style for disable CSS button */
+#disableCSSButtonHTML {
+    background-color: #c5c5c5;
+    /* Red */
+    border: 2px solid #c5c5c5;
+    color: white;
+}
+
+/* hover effect for disable CSS button */
+#disableCSSButtonHTML:hover {
+    background-color: #e0e0e0;
+    /* make the button a lighter red on hover */
+    border: 2px solid #a5a5a5;
+}
+
 button:hover {
     background-color: #3ec545;
     /* make the buttons a lighter green on hover */
     border: 2px solid yellowgreen;
+}
+
+button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
 
 /* Style for number input fields */
