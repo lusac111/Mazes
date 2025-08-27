@@ -6,32 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <title>MAZES</title>
     <script defer src="game.js"></script>
 </head>
 
 <body>
+    <h1>MAZES </h1>
     <main>
-        <h1>MAZES </h1>
         <div class="container">
             <canvas id="mazeDisplayHTML" width="300" height="300" class="canvas"></canvas>
-            <br>
-            <button id="newMazeButtonHTML" class="btn">New Maze</button>
-            <button id="printMazeButtonHTML" class="btn">Print Maze</button>
-            <button id="toggleModeButtonHTML" class="btn">Start</button>
             <div id="instructions">
                 <h2 id="instructionsTextHTML">Instructions</h2>
-                <p>Use the arrow keys to navigate the maze. Reach the blue circle to win!</p>
-                <p>Click "New Maze" to generate a new maze.</p>
-                <p>Click "Print Maze" to well... print the maze</p>
-                <p>Click "Start" to start the game</p>
+                <p>- Use the <span class="importantText">arrow</span> keys to move the <span class="redText">red</span>
+                    circle throughout the maze</p>
+                <p>- Reach the <span class="blueText">blue</span> circle to win!</p>
+                <p>- Click "New Maze" to generate a new maze.</p>
+                <p>- Click "Print Maze" to well... print the maze</p>
+                <p>- Click "Start" to start the game</p>
+                <p>- In "Regular Maze Mode", you can change the maze size (5 cells to 30 cells)</p>
+                <p class="warning">**Some mazes may have no solution**</p>
+                <p class="warning">**While in endless mode, the screen flashes**</p>
             </div>
-            <div id="regularMazeModeOptions">
-                <h2>Regular Maze Options</h2>
-                <label for="mazeSizeInputHTML">Maze size:</label>
-                <input type="number" id="mazeSizeInputHTML" value="15" min="5" max="50" class="numberInput">
-            </div>
+
         </div>
     </main>
+    <div id="buttonContainer">
+        <button id="newMazeButtonHTML" class="btn"><span class="material-symbols-outlined">
+autorenew
+</span></button>
+        <button id="printMazeButtonHTML" class="btn"><span class="material-symbols-outlined">
+                print
+            </span></button>
+        <button id="toggleModeButtonHTML" class="btn"><span class="material-symbols-outlined">
+play_arrow
+</span></button>
+    </div>
+    <div id="regularMazeModeOptions">
+        <label for="mazeSizeInputHTML">Maze size:</label>
+        <input type="number" id="mazeSizeInputHTML" value="15" min="5" max="50" class="numberInput">
+    </div>
     <footer>
         <small>
             a game by Lusac11.1

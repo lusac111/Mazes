@@ -4,12 +4,24 @@
     font-style: normal;
 }
 
+.courier-prime-regular {
+  font-family: "Courier Prime", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.courier-prime-bold {
+  font-family: "Courier Prime", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
+    font-weight: normal;
+    font-family: 'Courier Prime', monospace;
 }
 
 /* Style for the title */
@@ -19,6 +31,8 @@ h1 {
     font-family: 'Road Rage', sans-serif;
     letter-spacing: 2.5px;
     font-size: 4em;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 /* Style for the container */
@@ -31,18 +45,17 @@ h1 {
     padding: 10px;
     border-radius: 5px;
     text-align: center;
-    color: white;
-    box-shadow: 0 0 10px 5px #000000;
+    color: rgb(0, 0, 0);
+    display: contents;
 
 }
 
 /* Flexbox layout for body to center content vertically and horizontally */
 body {
     min-height: 100vh;
-    display: flex;
+    display: flexbox;
     flex-direction: column;
     background-color: #ffffff;
-    align-items: center;
     justify-content: center;
     margin: 0;
     padding: 1em;
@@ -55,10 +68,18 @@ canvas {
     margin-bottom: 1em;
     max-width: 100%;
     height: auto;
+    box-shadow: 0 0 10px 5px #000000;
+    display: block;
+    border-radius: 5px;
+    margin-right: 25px;
 }
+
 /* Ensure main takes available space */
 main {
     flex: 1;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
 }
 
 /* ensure footer stays at the bottom */
@@ -68,15 +89,24 @@ footer {
     padding: 1em;
 }
 
+/* style for button container */
+#buttonContainer {
+    display: flex;
+    margin-bottom: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Style for buttons */
 button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
+    /* Green */
     border: 2px solid #4CAF50;
     color: white;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: flex;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
@@ -85,7 +115,8 @@ button {
 }
 
 button:hover {
-    background-color: #3ec545; /* make the buttons a lighter green on hover */
+    background-color: #3ec545;
+    /* make the buttons a lighter green on hover */
     font-size: 18px;
     size-adjust: 1.5em;
     border: 2px solid yellowgreen;
@@ -100,4 +131,45 @@ button:hover {
     border-radius: 5px;
     text-align: center;
     margin-left: 10px;
+    transition-duration: 0.4s;
+}
+
+.numberInput:active {
+    transform: scale(1.1);
+}
+
+/* Style for the maze size div */
+#regularMazeModeOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+}
+
+/* style for warning messages */
+.warning {
+    color: red;
+    font-weight: bold;
+}
+
+/* style for important text */
+.importantText {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* style for blue text */
+.blueText {
+    color: blue;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/*style for red text */
+.redText {
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
 }
