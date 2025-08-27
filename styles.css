@@ -134,9 +134,6 @@ button:hover {
     transition-duration: 0.4s;
 }
 
-.numberInput:active {
-    fill: #afafaf;
-}
 
 /* Style for the maze size div */
 #regularMazeModeOptions {
