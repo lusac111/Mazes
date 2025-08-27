@@ -69,7 +69,7 @@ canvas {
     max-width: 100%;
     height: auto;
     box-shadow: 0 0 10px 5px #000000;
-    display: block;
+    display: flex;
     border-radius: 5px;
     margin-right: 25px;
 }
@@ -107,18 +107,18 @@ button {
     text-align: center;
     text-decoration: none;
     display: flex;
+    height: 48px;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
     transition-duration: 0.4s;
+    align-items: center;
 }
 
 button:hover {
     background-color: #3ec545;
     /* make the buttons a lighter green on hover */
-    font-size: 18px;
-    size-adjust: 1.5em;
     border: 2px solid yellowgreen;
 }
 
@@ -135,7 +135,7 @@ button:hover {
 }
 
 .numberInput:active {
-    transform: scale(1.1);
+    fill: #afafaf;
 }
 
 /* Style for the maze size div */
