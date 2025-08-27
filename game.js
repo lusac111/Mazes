@@ -22,6 +22,13 @@ let playerPixelY = START_POS.y * cellSize;
 let endlessPlayerPixelX = 7 * cellSize;
 let endlessPlayerPixelY = 7 * cellSize;
 
+// ignore default functions for certain keys
+window.addEventListener("keydown", function (e) {
+    if (["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+    }
+}, false);
+
 // Maze generation using Recursive Backtracking
 function generateMaze(size, offsetX = 0, offsetY = 0, maze = null) {
     // If maze is provided, carve only unvisited cells
@@ -333,19 +340,19 @@ function endlessMazeMode() {
         let visibleMaze = getEndlessMazeSection(endlessOffset.x, endlessOffset.y, mazeSize);
         const cell = visibleMaze[endlessPlayerY][endlessPlayerX];
         let nextX = endlessPlayerX, nextY = endlessPlayerY;
-        if (e.key === "ArrowUp" && !cell.walls[0] && endlessPlayerY > 0) {
+        if (e.key === "ArrowUp" && !cell.walls[0] && endlessPlayerY > 0 || e.key === "w" && !cell.walls[0] && endlessPlayerY > 0) {
             nextY--;
             moved = true;
             direction = "up";
-        } else if (e.key === "ArrowRight" && !cell.walls[1] && endlessPlayerX < mazeSize - 1) {
+        } else if (e.key === "ArrowRight" && !cell.walls[1] && endlessPlayerX < mazeSize - 1 || e.key === "d" && !cell.walls[1] && endlessPlayerX < mazeSize - 1) {
             nextX++;
             moved = true;
             direction = "right";
-        } else if (e.key === "ArrowDown" && !cell.walls[2] && endlessPlayerY < mazeSize - 1) {
+        } else if (e.key === "ArrowDown" && !cell.walls[2] && endlessPlayerY < mazeSize - 1 || e.key === "s" && !cell.walls[2] && endlessPlayerY < mazeSize - 1) {
             nextY++;
             moved = true;
             direction = "down";
-        } else if (e.key === "ArrowLeft" && !cell.walls[3] && endlessPlayerX > 0) {
+        } else if (e.key === "ArrowLeft" && !cell.walls[3] && endlessPlayerX > 0 || e.key === "a" && !cell.walls[3] && endlessPlayerX > 0) {
             nextX--;
             moved = true;
             direction = "left";
@@ -365,7 +372,7 @@ function endlessMazeMode() {
 }
 
 // Draw maze on canvas
-function drawMaze(grid, cellSize, animating = false, mode = "regular") {
+function drawMaze(grid, cellSize, mode = "regular") {
     ctx.clearRect(0, 0, mazeCanvas.width, mazeCanvas.height);
     ctx.strokeStyle = "#000";
     ctx.lineWidth = 2;
@@ -508,13 +515,13 @@ function regularMoveHandler(e) {
     if (endlessModeActive || isMoving) return;
     const cell = mazeGrid[playerY][playerX];
     let nextX = playerX, nextY = playerY;
-    if (e.key === "ArrowUp" && !cell.walls[0] && playerY > 0) {
+    if (e.key === "ArrowUp" && !cell.walls[0] && playerY > 0 || e.key === "w" && !cell.walls[0] && playerY > 0) {
         nextY--;
-    } else if (e.key === "ArrowRight" && !cell.walls[1] && playerX < mazeSize - 1) {
+    } else if (e.key === "ArrowRight" && !cell.walls[1] && playerX < mazeSize - 1 || e.key === "d" && !cell.walls[1] && playerX < mazeSize - 1) {
         nextX++;
-    } else if (e.key === "ArrowDown" && !cell.walls[2] && playerY < mazeSize - 1) {
+    } else if (e.key === "ArrowDown" && !cell.walls[2] && playerY < mazeSize - 1 || e.key === "s" && !cell.walls[2] && playerY < mazeSize - 1) {
         nextY++;
-    } else if (e.key === "ArrowLeft" && !cell.walls[3] && playerX > 0) {
+    } else if (e.key === "ArrowLeft" && !cell.walls[3] && playerX > 0 || e.key === "a" && !cell.walls[3] && playerX > 0) {
         nextX--;
     }
     if (nextX !== playerX || nextY !== playerY) {
