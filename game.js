@@ -8,6 +8,7 @@ const mazeSizeInput = document.getElementById("mazeSizeInputHTML");
 const instructionsText = document.getElementById("instructionsTextHTML");
 const disableCSSButton = document.getElementById("disableCSSButtonHTML");
 const stylesheet = document.getElementById("styleSheetHTML");
+const materialSymbols = document.getElementById("materialSymbolsStylesheetHTML");
 
 // maze grid configuration
 let mazeSize = 15;
@@ -642,8 +643,10 @@ disableCSSButton.addEventListener("click", () => {
     if (disableCSSButton.innerText === "Disable CSS") {
         disableCSSButton.innerText = "Enable CSS";
         stylesheet.disabled = true;
+        materialSymbols.disabled = true;
     } else {
         disableCSSButton.innerText = "Disable CSS";
         stylesheet.disabled = false;
+        materialSymbols.disabled = false;
     }
 });
